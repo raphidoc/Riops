@@ -85,12 +85,12 @@ IOPs.go <- function(report=FALSE, output.aTOT.COPS=FALSE, cast="down",
   data("Tdf")
   data("Sdf")
   data("TS4.cor.df")
-  if(!file.exists("directories.for.IOPs.dat")) {
+  if(!file.exists("directories.for.IOP.dat")) {
       cat("CREATE a file named directories.for.IOPs.dat in current directory (where R is launched)\n")
       cat("  and put in it the names of the directories where data files can be found (one by line)\n")
       stop()
     } else {
-      dirdats <- scan(file = "directories.for.IOPs.dat", "", sep = "\n", comment.char = "#")
+      dirdats <- scan(file = "directories.for.IOP.dat", "", sep = "\n", comment.char = "#")
       for(dirdat in dirdats) {
         if(!file.exists(dirdat)) {
           cat(dirdat, "does not exist")
