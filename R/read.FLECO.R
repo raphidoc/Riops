@@ -26,7 +26,7 @@ read.FLECO <- function(filen)
   em <- c(unique(FLECO$V3),unique(FLECO$V5),unique(FLECO$V7))
   
   TempIntrument=FLECO$V9*(-0.0056) + 70.0376
-  data <- list(FL=FL, ex=370, em,TempIntrument=TempIntrument, Time=Time)
+  data <- list(FL=FL, ex=370, em, TempIntrument=TempIntrument, Time=Time)
 
   return(data)
 

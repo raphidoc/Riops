@@ -1445,6 +1445,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
 
     ASPH.fitted.down$a = matrix(nrow=nz, ncol=length(ASPH$wl))
     ASPH.fitted.down$a[ix.good.fitted.depth,] = tmp$aop.fitted
+    
+    ASPH.fitted.down$wl = ASPH$wl
 
     # remove extrapolated data for down cast
     min.z = min(ASPH$depth[ASPH$ixmin:ix.z.max], na.rm=T)
@@ -1459,6 +1461,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
                          span=span.ASPH, depth.fitted)
 
       ASPH.fitted.up$a = tmp$aop.fitted
+      
+      ASPH.fitted.up$wl = ASPH$wl
 
       # remove extrapolated data for up cast
       min.z = min(ASPH$depth[ASPH$ixmax:ix.z.max], na.rm=T)
@@ -1878,6 +1882,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
     }
     HS6.fitted.down$bbP555 = bbP555.down
     HS6.fitted.down$nuP = nuP.down
+    
+    HS6.fitted.down$wl = HS6$wl
 
     if ((HS6$ixmax - ix.z.max) < 5) {
       print("No HS6 upcast to fit")
@@ -1958,6 +1964,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
       }
       HS6.fitted.up$bbP555 = bbP555.up
       HS6.fitted.up$nuP = nuP.up
+      
+      HS6.fitted.up$wl = HS6$wl
     }
   } else {
     HS6.fitted.down = list()
@@ -1985,6 +1993,7 @@ correct.merge.IOP.profile <- function(instrument, parameters){
                        span=span.FLECO, depth.fitted)
 
     FLECO.fitted.down$FL = tmp$aop.fitted
+    FLECO.fitted.down$wl = FLECO$em
 
     # remove extrapolated data for down cast
     min.z = min(FLECO$depth[FLECO$ixmin:ix.z.max], na.rm=T)
@@ -2001,6 +2010,7 @@ correct.merge.IOP.profile <- function(instrument, parameters){
                          span=span.FLECO, depth.fitted)
 
       FLECO.fitted.up$FL = tmp$aop.fitted
+      FLECO.fitted.up$wl = FLECO$em
 
       # remove extrapolated data for up cast
       min.z = min(FLECO$depth[FLECO$ixmax:ix.z.max], na.rm=T)
