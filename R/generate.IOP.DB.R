@@ -44,12 +44,12 @@ generate.IOP.DB <- function(path="./"){
   write_csv(CTD_DF, path = "../L3/CTD/CTD_DB.csv")
   
   FLECO_DF <- bind_rows(mget(ls(pattern = "(FLECO)_[[:digit:]]+")))
-  write_csv(FLECO_DF, path = "../L3/FLECO/FLECO_DF.csv")
+  write_csv(FLECO_DF, path = "../L3/FLECO/FLECO_DB.csv")
   
   DF_list <- purrr::map(mget(ls(pattern = "(HS6)_[[:digit:]]+")),
              setNames,
              c("ID","Depth",paste0("bbP_",wl_HS6),paste0("bb_",wl_HS6),"FDOM","FCHL","bbP555","nuP"))
   HS6_DF <- bind_rows(DF_list)
-  write_csv(HS6_DF, path = "../L3/HS6/HS6_DF.csv")
+  write_csv(HS6_DF, path = "../L3/HS6/HS6_DB.csv")
              
 }
