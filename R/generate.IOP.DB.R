@@ -36,7 +36,7 @@ generate.IOP.DB <- function(path="./"){
     }
   }
   ASPH_DF <- bind_rows(mget(ls(pattern = "(ASPH)_[[:digit:]]+")))
-  names(ASPH_DF) <- c("ID","Depth",wl_ASPH)
+  names(ASPH_DF) <- c("ID","Depth",paste0("A_",wl_ASPH))
   write_csv(ASPH_DF, path = "../L3/ASPH/ASPH_DB.csv")
   
   CTD_DF <- bind_rows(mget(ls(pattern = "(CTD)_[[:digit:]]+")))
@@ -48,7 +48,7 @@ generate.IOP.DB <- function(path="./"){
   
   DF_list <- purrr::map(mget(ls(pattern = "(HS6)_[[:digit:]]+")),
              setNames,
-             c("ID","Depth",paste0("bbP_",wl_HS6),paste0("bb_",wl_HS6),"FDOM","FCHL","bbP555","nuP"))
+             c("ID","Depth",paste0("Bbp_",wl_HS6),paste0("Bb_",wl_HS6),"FDOM","FCHL","bbP555","nuP"))
   HS6_DF <- bind_rows(DF_list)
   write_csv(HS6_DF, path = "../L3/HS6/HS6_DB.csv")
              
