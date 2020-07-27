@@ -11,8 +11,8 @@
 #'@author Simon Belanger
 #'
 #'@export
-spectral.aw  <- function(waves, MOREL=FALSE)
-{
+spectral.aw  <- function(waves, MOREL=FALSE) {
+  data("AWTable")
 
   if (MOREL) {
     Kw <- spline(KDTable_MM01$V1, KDTable_MM01$V2,  xout=waves, method="natural")

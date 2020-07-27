@@ -48,7 +48,7 @@ generate.IOP.DB <- function(path="./"){
   
   DF_list <- purrr::map(mget(ls(pattern = "(HS6)_[[:digit:]]+")),
              setNames,
-             c("ID","Depth",paste0("Bbp_",wl_HS6),paste0("Bb_",wl_HS6),"FDOM","FCHL","bbP555","nuP"))
+             c("ID","Depth",paste0("Bbp_",wl_HS6),paste0("Bb_",wl_HS6),"FDOM","FCHL","Bbp_555","nuP"))
   HS6_DF <- bind_rows(DF_list)
   write_csv(HS6_DF, path = "../L3/HS6/HS6_DB.csv")
              
