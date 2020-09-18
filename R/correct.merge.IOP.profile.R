@@ -1465,7 +1465,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
                            span=span.ASPH, depth.fitted[ix.good.fitted.depth])
      else tmp=fit.with.loess(ASPH$wl, depth.raw, data.raw,
                            span=span.ASPH, depth.fitted[ix.good.fitted.depth])
-
+    
+    ASPH.fitted.down$wl <- ASPH$wl
     ASPH.fitted.down$a = matrix(nrow=nz, ncol=length(ASPH$wl))
     ASPH.fitted.down$a[ix.good.fitted.depth,] = tmp$aop.fitted
 
@@ -1514,10 +1515,13 @@ correct.merge.IOP.profile <- function(instrument, parameters){
     # Interpolate using loess function
     tmp=fit.with.loess(ACS$a.wl, ACS$Depth[ACS$ixmin:ix.z.max], ACS$a.corrected[ACS$ixmin:ix.z.max,],
                         span=span.ACS, depth.fitted)
+    
+    ACS.fitted.down$a_wl <- ACS$a.wl
     ACS.fitted.down$a = tmp$aop.fitted
 
     tmp=fit.with.loess(ACS$c.wl, ACS$Depth[ACS$ixmin:ix.z.max], ACS$c.corrected[ACS$ixmin:ix.z.max,],
                        span=span.ACS, depth.fitted)
+    ACS.fitted.down$c_wl <- ACS$c.wl
     ACS.fitted.down$c = tmp$aop.fitted
 
     # remove extrapolated data for down cast
@@ -1577,6 +1581,7 @@ correct.merge.IOP.profile <- function(instrument, parameters){
     tmp=fit.with.loess(BB9$wl, BB9$Depth[BB9$ixmin:ix.z.max],
                        BB9$bbP.offset[BB9$ixmin:ix.z.max,],
                        span=span.BB9, depth.fitted)
+    BB9.fitted.down$wl <- BB9$wl 
     BB9.fitted.down$bbP = tmp$aop.fitted
 
     tmp=fit.with.loess(BB9$wl, BB9$Depth[BB9$ixmin:ix.z.max],
@@ -1666,6 +1671,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
     tmp=fit.with.loess(BB3$wl, BB3$Depth[BB3$ixmin:ix.z.max],
                        BB3$bbP.offset[BB3$ixmin:ix.z.max,],
                        span=span.BB3, depth.fitted)
+    
+    BB3.fitted.down$wl <- BB3$wl
     BB3.fitted.down$bbP = tmp$aop.fitted
 
     tmp=fit.with.loess(BB3$wl, BB3$Depth[BB3$ixmin:ix.z.max],
@@ -1842,7 +1849,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
                            span=span.HS6, depth.fitted[ix.good.fitted.depth]) else
         tmp=fit.with.loess(HS6$wl, depth.raw,data.raw,
                            span=span.HS6, depth.fitted[ix.good.fitted.depth])
-
+    
+    HS6.fitted.down$wl <- HS6$wl
     HS6.fitted.down$bbP = matrix(nrow=nz, ncol=6)
     HS6.fitted.down$bbP[ix.good.fitted.depth,] = tmp$aop.fitted
 
@@ -1852,7 +1860,8 @@ correct.merge.IOP.profile <- function(instrument, parameters){
                            span=span.HS6, depth.fitted[ix.good.fitted.depth]) else
         tmp=fit.with.loess(HS6$wl, depth.raw,data.raw,
                            span=span.HS6, depth.fitted[ix.good.fitted.depth])
-
+    
+    HS6.fitted.down$wl <- HS6$wl
     HS6.fitted.down$bb = matrix(nrow=nz, ncol=6)
     HS6.fitted.down$bb[ix.good.fitted.depth,] = tmp$aop.fitted
 
