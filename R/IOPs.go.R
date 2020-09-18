@@ -25,7 +25,7 @@
 #' the ac-s (ACS). The default is ASPH.
 #
 #'@details  \code{IOPs.go} processes data files found in each directories specify in the file
-#'named directories.for.IOPs.dat. NOTE: it is important to create one folder
+#'named directories.for.iop.dat. NOTE: it is important to create one folder
 #'per cast following this convention:
 #'\itemize{
 #'  \item{../YYYYMMDD_StationXXX/PACKAGENAME/}
@@ -34,7 +34,7 @@
 #'  with the LaTex report) and PACKAGENAME is the name of the package.
 #'  It could be anything.
 #'
-#'For each directory specifyed in directories.for.IOPs.dat, four ASCII
+#'For each directory specifyed in directories.for.iop.dat, four ASCII
 #'files will be necessary in addtion to the files coming from the instruments
 #'located in the directory. The ASCII files are:
 #'\itemize{
@@ -85,12 +85,12 @@ IOPs.go <- function(report=FALSE, output.aTOT.COPS=FALSE, cast="down",
   data("Tdf")
   data("Sdf")
   data("TS4.cor.df")
-  if(!file.exists("directories.for.IOPs.dat")) {
-      cat("CREATE a file named directories.for.IOPs.dat in current directory (where R is launched)\n")
+  if(!file.exists("directories.for.iop.dat")) {
+      cat("CREATE a file named directories.for.iop.dat in current directory (where R is launched)\n")
       cat("  and put in it the names of the directories where data files can be found (one by line)\n")
       stop()
     } else {
-      dirdats <- scan(file = "directories.for.IOPs.dat", "", sep = "\n", comment.char = "#")
+      dirdats <- scan(file = "directories.for.iop.dat", "", sep = "\n", comment.char = "#")
       for(dirdat in dirdats) {
         if(!file.exists(dirdat)) {
           cat(dirdat, "does not exist")
