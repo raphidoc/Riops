@@ -764,33 +764,49 @@ correct.merge.IOP.profile <- function(instrument, parameters){
   }
 
   # This case exceptions have been writen to manage data with no CTD
+  # User input must be type "double", if check fail raise error
   if (instrument$ASPH == 1 & is.null(CTD$Time)) {
+    
     Salinity = as.numeric(readline("No CTD data; Enter a salinity value for beta correction of ASPH:  "))
+    if (is.na(Salinity)) {stop("User provided salinity is not a numeric value")}
     ASPH$S = rep(Salinity, length(ASPH$time))
+    
     Temperature = as.numeric(readline("No CTD data; Enter a temperature value for beta correction of ASPH:  "))
+    if (is.na(Temperature)) {stop("User provided temperature is not a numeric value")}
     ASPH$T = rep(Temperature, length(ASPH$time))
   }
   if (instrument$ACS == 1 & is.null(CTD$Time)) {
     Salinity = as.numeric(readline("No CTD data; Enter a salinity value for beta correction of ACS:  "))
+    if (is.na(Salinity)) {stop("User provided salinity is not a numeric value")}
     ACS$S = rep(Salinity, length(ACS$Time))
+    
     Temperature = as.numeric(readline("No CTD data; Enter a Temperature value for beta correction of ACS:  "))
+    if (is.na(Temperature)) {stop("User provided temperature is not a numeric value")}
     ACS$T = rep(Temperature, length(ACS$Time))
     
   }
   if (instrument$HS6 == 1 & is.null(CTD$Time)) {
+    
     Salinity = as.numeric(readline("No CTD data; Enter a salinity value for beta correction of HS6:  "))
+    if (is.na(Salinity)) {stop("User provided salinity is not a numeric value")}
     HS6$S = rep(Salinity, length(HS6$Time))
   }
   if (instrument$BB9 == 1 & is.null(CTD$Time)) {
+    
     Salinity = as.numeric(readline("No CTD data; Enter a salinity value for beta correction of BB9:  "))
+    if (is.na(Salinity)) {stop("User provided salinity is not a numeric value")}
     BB9$S = rep(Salinity, length(BB9$Time))
   }
   if (instrument$BB3 == 1 & is.null(CTD$Time)) {
+    
     Salinity = as.numeric(readline("No CTD data; Enter a salinity value for beta correction of BB3:  "))
+    if (is.na(Salinity)) {stop("User provided salinity is not a numeric value")}
     BB3$S = rep(Salinity, length(BB3$Time))
   }
   if (instrument$FLBBCD == 1 & is.null(CTD$Time)) {
+    
     Salinity = as.numeric(readline("No CTD data; Enter a salinity value for beta correction of FLBBCD:  "))
+    if (is.na(Salinity)) {stop("User provided salinity is not a numeric value")}
     FLBBCD$S = rep(Salinity, length(FLBBCD$Time))
   }
 

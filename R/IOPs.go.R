@@ -82,11 +82,13 @@
 
 IOPs.go <- function(report=FALSE, output.aTOT.COPS=FALSE, cast="down",
                     depth.interval=c(0.75,2.1), a.instrument="ASPH") {
+  L2 <- getwd()
+  
   data("Tdf")
   data("Sdf")
   data("TS4.cor.df")
   if(!file.exists("directories.for.iop.dat")) {
-      cat("CREATE a file named directories.for.iop.dat in current directory (where R is launched)\n")
+      cat("CREATE a file named directories.for.iop.dat in current directory (R working directory)\n")
       cat("  and put in it the names of the directories where data files can be found (one by line)\n")
       stop()
     } else {
@@ -97,8 +99,29 @@ IOPs.go <- function(report=FALSE, output.aTOT.COPS=FALSE, cast="down",
           stop()
         }
         if (exists("IOP")) rm(IOP)
-        mymessage(paste("PROCESSING DIRECTORY", dirdat), head = "@", tail = "@")
-        IOP = process.IOPs(dirdat)
+        tryCatch(
+          expr = {
+            mymessage(paste("PROCESSING DIRECTORY", dirdat), head = "@", tail = "@")
+            IOP = process.IOPs(dirdat)
+            #message("Succes \\o/")
+          },
+          error = function(e){
+            message("error: /o\\")
+            message(e,"\n")
+            cat(paste0("-----",Sys.time(),"\n",dirdat,"\n",e,"-----\n"),
+                file = file.path(L2 ,paste0("Riops_errors_",Sys.Date(),".txt")),
+                append = T)
+            #invokeRestart("abort")
+          },
+          #warning = function(w){
+          #message("warning: _o_\n\t\x20\x20|\n\t\x20/ \\")
+          #cat(paste0("-----",dirdat,"\n",w,"\n-----"),
+          #file = file.path(starting.dir,paste0("COPS_warnings_",Sys.Date(),".txt")),
+          #append = T)
+          #invokeRestart("muffleWarning")
+          #},
+          finally = next()
+        )
         if (report) {
           if (is.list(IOP)) {
             create.report(dirdat)
@@ -113,5 +136,6 @@ IOPs.go <- function(report=FALSE, output.aTOT.COPS=FALSE, cast="down",
         } else print("No output for COPS")
       }
     }
+  setwd(L2)
 }
 
