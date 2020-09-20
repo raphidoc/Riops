@@ -10,7 +10,7 @@
 #'
 #'@author Simon Belanger
 #'
-#'@export
+
 spectral.aw  <- function(waves, MOREL=FALSE)
 {
 

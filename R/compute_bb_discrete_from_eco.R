@@ -22,7 +22,7 @@
 #' @author Simon Belanger
 #' @export 
 
-compute.bb.discrete.from.ECO <- function(eco,
+compute_bb_discrete_from_ECO <- function(eco,
                                          ECO.type="VFS3",
                                          ECO.bands=NA,
                                          Station=NA,

@@ -39,7 +39,7 @@
 #' @author Simon Belanger
 #' @export
 
-compute.aTOT.for.COPS <- function(pathIOP=".", cast="down", depth.interval=c(0.75,2.1), instrument = "ASPH") {
+compute_atot_for_cops <- function(pathIOP=".", cast="down", depth.interval=c(0.75,2.1), instrument = "ASPH") {
   setwd(pathIOP)
 
   # Reading IOP files

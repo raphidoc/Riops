@@ -14,7 +14,7 @@
 #' @export
 #'
 
-compare.ACs.blank <-function(NF=2, output.path, SAVE=TRUE) {
+compare_acs_blank <-function(NF=2, output.path, SAVE=TRUE) {
 
   filen = rep("name", NF)
 

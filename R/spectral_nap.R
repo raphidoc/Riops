@@ -1,4 +1,4 @@
-#'
+
 #' Return non-algal particles (NAP) spectra using exponential model
 #'
 #'
