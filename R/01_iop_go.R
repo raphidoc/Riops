@@ -78,6 +78,7 @@
 #'@author Simon Belanger
 #'
 #'@export
+#'
 
 
 IOPs.go <- function(report=FALSE, output.aTOT.COPS=FALSE, cast="down",
